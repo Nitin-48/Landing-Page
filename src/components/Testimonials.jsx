@@ -58,28 +58,22 @@ export default function Testimonials() {
   const secondRow = testimonials.slice(2);
 
   return (
-    <section className="relative px-4 sm:px-6 md:px-8 py-16 sm:py-20 bg-gradient-to-br from-[#050a17] via-[#081a2b] to-[#0f172a] text-white overflow-hidden">
+    <section className="relative px-4 sm:px-6 md:px-8 py-16 sm:py-20 bg-white text-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="relative mb-12">
           <h2
             className="
               text-3xl sm:text-4xl md:text-5xl font-extrabold text-center
-              bg-gradient-to-r from-teal-400 via-cyan-300 to-white
+              bg-gradient-to-r from-black to-gray-400
               bg-clip-text text-transparent
               animate-[gradientShift_8s_linear_infinite]
-              drop-shadow-[0_0_12px_rgba(34,211,238,0.45)]
+              drop-shadow-md
             "
           >
             What People Are Saying
           </h2>
-          {/* Scroll progress indicator */}
-          {/* <div className="relative h-2 mt-6 bg-gray-700 rounded-full overflow-hidden">
-            <div
-              className="absolute top-0 left-0 h-2 bg-gradient-to-r from-teal-400 via-cyan-400 to-purple-500 rounded-full transition-all duration-300"
-              style={{ width: `${scrollProgress}%` }}
-            ></div>
-          </div> */}
+          
         </div>
 
         <div className="relative">
@@ -110,7 +104,7 @@ export default function Testimonials() {
                         transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6
                         before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-gradient-to-r before:from-teal-400 before:via-cyan-400 before:to-purple-500 before:-z-10
                       "
-                      style={{ boxShadow: "0 0 15px rgba(34,211,238,0.4)" }}
+                      style={{ boxShadow: "0 0 10px rgba(34,211,238,0.4)" }}
                     >
                       <img src={t.avatar} alt={t.name} className="w-full h-full rounded-full object-cover" />
                     </div>
@@ -163,7 +157,7 @@ export default function Testimonials() {
                         transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6
                         before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-gradient-to-r before:from-purple-400 before:via-teal-400 before:to-cyan-400 before:-z-10
                       "
-                      style={{ boxShadow: "0 0 15px rgba(139,92,246,0.4)" }}
+                      style={{ boxShadow: "0 0 10px rgba(139,92,246,0.4)" }}
                     >
                       <img src={t.avatar} alt={t.name} className="w-full h-full rounded-full object-cover" />
                     </div>
@@ -190,8 +184,8 @@ export default function Testimonials() {
           </Marquee>
 
           {/* EDGE OVERLAYS */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#050a17]"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#050a17]"></div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white"></div>
         </div>
       </div>
     </section>

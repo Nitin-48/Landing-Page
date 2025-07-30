@@ -124,10 +124,10 @@ export default function Work() {
         px-4 
         overflow-hidden
       "
-      style={{
-        background:
-          "radial-gradient(circle at top left, rgba(20,184,166,0.12), transparent 50%), radial-gradient(circle at bottom right, rgba(59,130,246,0.12), transparent 50%), #050a17",
-      }}
+      // style={{
+      //   background:
+      //     "radial-gradient(circle at top left, rgba(20,184,166,0.12), transparent 50%), radial-gradient(circle at bottom right, rgba(59,130,246,0.12), transparent 50%), #050a17",
+      // }}
       id="work"
     >
       {/* Floating glow shapes */}
@@ -149,11 +149,11 @@ export default function Work() {
       {/* Heading */}
       <h2
         className="
-          text-3xl sm:text-4xl md:text-5xl lg:text-6xl 
-          text-center font-extrabold leading-tight mb-10 sm:mb-14 md:mb-20
-          bg-[length:200%_200%] bg-gradient-to-r from-teal-400 via-cyan-300 to-white
+          text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+          text-center font-extrabold leading-tight mb-10 sm:mb-14 md:mb-10
+          bg-[length:200%_200%] bg-gradient-to-r from-black to-gray-400
           bg-clip-text text-transparent animate-[gradientShift_8s_linear_infinite]
-          drop-shadow-[0_0_10px_rgba(34,211,238,0.4)]
+          drop-shadow-md
         "
         data-aos="fade-up"
       >
@@ -170,10 +170,10 @@ export default function Work() {
           <div
             key={i}
             className="absolute rounded-2xl p-5 sm:p-6 lg:p-8 flex flex-col items-center text-center border-2
-              bg-gray-800/80 border-gray-700
-              shadow-[0_0_25px_rgba(34,211,238,0.25),0_10px_20px_rgba(0,0,0,0.6)]
-              hover:shadow-[0_0_35px_rgba(34,211,238,0.5),0_15px_30px_rgba(0,0,0,0.7)]
-              hover:border-teal-400 transition-all duration-700 ease-out
+              bg-black/90 border-gray-700
+              shadow-[0_0_0.5px_rgba(34,211,238,0.25),0_0.5px_0.5px_rgba(0,0,0,0.6)]
+              hover:shadow-[0_0_10px_rgba(34,211,238,0.5),0_10px_10px_rgba(0,0,0,0.7)]
+              hover:border-black-400/20 transition-all duration-700 ease-out
               space-y-3 sm:space-y-4 backdrop-blur-md"
             style={{
               width: `${cardWidth}px`,
@@ -190,7 +190,7 @@ export default function Work() {
             <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold px-2">
               {s.title}
             </h3>
-            <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed px-2">
+            <p className="text-gray-300 text-left text-sm sm:text-base lg:text-lg leading-relaxed px-2">
               {s.text}
             </p>
           </div>
@@ -198,24 +198,25 @@ export default function Work() {
       </div>
 
       {/* Step controls */}
-      <div
-        className="z-20 mt-8 sm:mt-10 flex flex-wrap justify-center gap-2 bg-gray-800/60 rounded-full p-2 backdrop-blur-md border border-gray-700 shadow-inner shadow-black/30 sticky bottom-4"
-        data-aos="fade-up"
-        data-aos-delay="400"
-      >
+      <div className="w-full flex justify-center">
+  <div
+    className="z-20 mt-8 sm:mt-10 flex flex-wrap justify-center gap-2 bg-black/80 rounded-full w-fit p-2 backdrop-blur-md border border-gray-700 shadow-inner shadow-black/30 sticky bottom-4"
+    data-aos="fade-up"
+  >
         {steps.map((_, i) => (
           <button
             key={i}
             onClick={() => setPhase(i)}
             className={`px-4 sm:px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
               phase === i
-                ? "bg-gradient-to-r from-teal-400 to-cyan-400 text-black shadow-[0_0_10px_rgba(34,211,238,0.6)]"
+                ? "bg-gradient-to-r from-white to-white text-black shadow-[0_0_10px_black]"
                 : "text-gray-300 hover:text-white hover:bg-gray-700"
             }`}
           >
             Step {i + 1}
           </button>
         ))}
+      </div>
       </div>
 
       <style>{`

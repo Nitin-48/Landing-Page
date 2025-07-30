@@ -69,22 +69,22 @@ export default function TeamSection() {
   };
 
   return (
-    <section className="relative bg-gradient-to-br from-[#050a17] via-[#081a2b] to-[#0f172a] text-white py-20 px-4 overflow-hidden">
+    <section className="relative bg-white text-black/80 py-20 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
         {/* LEFT TEXT — vertically centered */}
         <div className="flex flex-col justify-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
               Our{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-purple-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-400">
                 people
               </span>{" "}
               make us great
             </h2>
-            <p className="text-gray-300 mb-4 text-lg">
+            <p className="text-gray-400 mb-4 text-lg">
               We thrive on technology, innovation and passion that unlock long‑term value.
             </p>
-            <p className="text-gray-400 text-base leading-relaxed">
+            <p className="text-gray-500 text-base leading-relaxed">
               Join us and you’ll work with incredible minds, tackle bold challenges,
               and have fun while you’re at it. Together we push boundaries, build
               something meaningful, and make lifelong connections.
@@ -111,7 +111,7 @@ export default function TeamSection() {
               onMouseLeave={() => handleMouseLeave(cardRefs.current[idx])}
             >
               <div className="relative w-24 h-24 rounded-full overflow-hidden ring-4 ring-cyan-400/30 group-hover:ring-teal-400/50 transition-all duration-500">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400/20 to-purple-500/20 blur-xl animate-pulse"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400/20 to-cyan-500/20 blur-xl animate-pulse"></div>
                 <img
                   src={member.img}
                   alt={member.name}
@@ -122,7 +122,7 @@ export default function TeamSection() {
                 <h3 className="text-xl font-semibold">{member.name}</h3>
                 <p className="text-sm text-cyan-400 font-medium mb-2">{member.role}</p>
                 <p className="text-gray-300 mb-4 leading-relaxed">{member.bio}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                {/* <div className="flex flex-wrap gap-2 mb-4">
                   {member.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
@@ -131,7 +131,7 @@ export default function TeamSection() {
                       {tag}
                     </span>
                   ))}
-                </div>
+                </div> */}
                 <div className="flex items-center space-x-4 text-gray-400">
                   {[FaFacebookF, FaGithub, FaTwitter, FaDribbble].map((Icon, i) => (
                     <a

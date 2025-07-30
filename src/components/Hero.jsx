@@ -1,7 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
-import blackCard from "../assets/blackCard.png";
+import React, { useEffect, useState } from "react";
+// import blackCard from "../assets/blackCard.png";
 import AS from "../assets/AS.svg";
 import GS from "../assets/GS.png";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
+import CardModel from "../components/CardModel";
+
 
 export default function HeroInteractive() {
   const words = ["Better", "Secure", "Easy"];
@@ -16,37 +20,39 @@ export default function HeroInteractive() {
   }, [words.length]);
 
   // glow & tilt
-  const cardRef = useRef(null);
-  const [setPos] = useState({ x: -9999, y: -9999 });
+  // const cardRef = useRef(null);
+  // // eslint-disable-next-line no-unused-vars
+  // const [pos, setPos] = useState({ x: -9999, y: -9999 });
+
 
   useEffect(() => {
-    const moveGlow = (e) => setPos({ x: e.clientX, y: e.clientY });
+    const moveGlow = (e) =>({ x: e.clientX, y: e.clientY });
     window.addEventListener("mousemove", moveGlow);
     return () => window.removeEventListener("mousemove", moveGlow);
   },);
 
-  const handleMouseMove = (e) => {
-    const card = cardRef.current;
-    if (!card) return;
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * 10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-    card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
-  };
-  const handleMouseLeave = () => {
-    if (cardRef.current) {
-      cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-    }
-  };
+  // const handleMouseMove = (e) => {
+  //   const card = cardRef.current;
+  //   if (!card) return;
+  //   const rect = card.getBoundingClientRect();
+  //   const x = e.clientX - rect.left;
+  //   const y = e.clientY - rect.top;
+  //   const centerX = rect.width / 2;
+  //   const centerY = rect.height / 2;
+  //   const rotateX = ((y - centerY) / centerY) * 10;
+  //   const rotateY = ((x - centerX) / centerX) * 10;
+  //   card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
+  // };
+  // const handleMouseLeave = () => {
+  //   if (cardRef.current) {
+  //     cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  //   }
+  // };
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen text-black flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 pt-24 sm:pt-28 bg-white/90"
+      className="relative min-h-screen text-gray-800 flex items-center justify-center overflow-hidden px-4 sm:px-6 md:px-12 pt-24 sm:pt-28 bg-white"
     >
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {Array.from({ length: 20 }).map((_, i) => (
@@ -134,22 +140,22 @@ export default function HeroInteractive() {
         {/* LEFT */}
         <div className="space-y-4 sm:space-y-6 text-center md:text-left px-2">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-cyan-400 to-purple-500">
+            <span className="block text-transparent bg-clip-text bg-black">
               Save more on every spend
             </span>
             <span className="block mt-2">
               Make life{" "}
               <span className="relative inline-block ml-2 w-[6ch] h-[1em] align-baseline">
                 {words.map((w, i) => (
-                  <span
+                <span
                     key={i}
-                    className={`absolute left-0 top-0 w-full text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-teal-400 to-cyan-400 font-extrabold transition-opacity duration-700 ${
+                    className={`absolute left-0 top-0 w-full text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-400 to-purple-400 font-extrabold transition-opacity duration-700 ${
                       currentIndex === i ? "opacity-100" : "opacity-0"
                     }`}
                   >
                     {w}
-                  </span>
-                ))}
+                </span>
+                  ))}
               </span>
             </span>
           </h1>
@@ -176,26 +182,47 @@ export default function HeroInteractive() {
           </div> */}
 
           {/* Store badges */}
-          <div className="flex justify-center md:justify-start gap-4 mt-6">
-            <img src={AS} alt="AppStore" className="h-8 sm:h-12 md:h-14 lg:h-14 w-auto object-contain" />
-            <img src={GS} alt="PlayStore" className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto object-contain" />
-          </div>
+        <div className="flex items-center gap-4 mt-6">
+  <a href="#work">
+    <img
+      src={AS}
+      alt="App Store"
+      className="h-[44px] w-auto object-contain block hover:scale-110 transition-transform ease-in-out duration-400"
+    />
+  </a>
+  <a href="#feature">
+    <img
+      src={GS}
+      alt="Google Play"
+      className="h-[62px] w-auto object-contain block hover:scale-110 transition-transform ease-in-out duration-400"
+    />
+  </a>
+</div>
+
+
+
         </div>
 
         {/* RIGHT */}
-        <div
-          className="flex justify-center md:justify-end perspective-1000 px-2 mt-8 md:mt-0"
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div
-            ref={cardRef}
-            className="w-60 sm:w-64 md:w-72 lg:w-80 xl:w-96 p-0 rounded-3xl overflow-hidden backdrop-blur-md shadow-[0_0_40px_rgba(34,211,238,0.3),0_25px_60px_rgba(0,0,0,0.7)] transition-transform duration-200 ease-out will-change-transform"
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <img src={blackCard} alt="Spendiz Card" className="w-full h-full object-contain" />
-          </div>
-        </div>
+      {/* RIGHT - 3D Card Model */}
+<div className="flex justify-center md:justify-end px-2 mt-8 md:mt-0 w-full h-full">
+  {/* ✅ Outer container allows scroll but disables pointer to Canvas */}
+  <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] xl:h-[650px] pointer-events-none">
+    
+    {/* ✅ This enables pointer ONLY inside canvas area */}
+    <div className="w-full h-full pointer-events-auto touch-none">
+      <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
+        <ambientLight intensity={0.6} />
+        <directionalLight position={[2, 2, 5]} />
+        <Suspense fallback={null}>
+          <CardModel />
+        </Suspense>
+      </Canvas>
+    </div>
+
+  </div>
+</div>
+
       </div>
 
       {/* SVG Wave */}
@@ -216,16 +243,6 @@ export default function HeroInteractive() {
           </linearGradient>
         </defs>
       </svg>
-
-      <style>{`
-        @keyframes float0 {0%{transform:translateY(0);}100%{transform:translateY(-20px);}}
-        @keyframes float1 {0%{transform:translateY(0);}100%{transform:translateY(15px);}}
-        @keyframes float2 {0%{transform:translateY(0);}100%{transform:translateY(-10px);}}
-        @keyframes pulse {
-          0%,100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-      `}</style>
     </section>
   );
 }

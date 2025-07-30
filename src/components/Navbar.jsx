@@ -26,11 +26,11 @@ export default function Navbar() {
     { label: "Home", id: "hero" },
     { label: "Features", id: "feature" },
     { label: "Work", id: "work" },
-    { label: "About us", id: "about" },
+    { label: "FAQ", id: "faq" },
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white backdrop-blur-md shadow-md border-b border-cyan-400/30 transition-colors">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/50 backdrop-blur-md shadow-md border-b border-cyan-400/30 transition-colors">
       {/* Scroll Progress Bar */}
       <div
         className="h-[3px] bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 transition-all duration-150 ease-linear"
@@ -44,7 +44,7 @@ export default function Navbar() {
           <img
             src={blackLogo}
             alt="Spendiz"
-            className="w-[130px] h-20 hover:scale-110 transition-transform duration-300"
+            className="w-[130px] h-20 hover:scale-110 transition-transform duration-300 p-0.5"
           />
         </a>
 
@@ -53,7 +53,7 @@ export default function Navbar() {
           <nav
             className="
                         flex items-center space-x-4
-            bg-[#101936]/80
+            bg-black/90
             border border-cyan-400/40
             rounded-full
              px-5 py-3        /* mobile default */
@@ -68,7 +68,7 @@ export default function Navbar() {
                 href={`#${link.id}`}
                 className="
                   text-gray-200 text-base font-medium px-3 py-1 rounded-full
-                  hover:bg-gradient-to-r hover:from-teal-400 hover:to-cyan-500 hover:text-black transition-all duration-200
+                  hover:bg-gradient-to-r hover:from-gray-400 hover:to-gray-500 hover:text-black transition-all duration-200
                 "
               >
                 {link.label}
@@ -78,7 +78,7 @@ export default function Navbar() {
               href="#contact"
               className="
                 flex items-center text-gray-200 text-base font-medium px-3 py-1 rounded-full
-                hover:bg-gradient-to-r hover:from-teal-400 hover:to-cyan-500 hover:text-black transition-all duration-200
+                hover:bg-gradient-to-r hover:from-gray-400 hover:to-gray-500 hover:text-black transition-all duration-200
               "
             >
               Contact us <ChevronRight size={16} className="ml-1" />
@@ -89,13 +89,13 @@ export default function Navbar() {
           <a
             href="#"
             className="
-              bg-gradient-to-r from-teal-400 to-cyan-500
-              text-[#0a1128] text-base font-bold
+              bg-gradient-to-r from-black to-gray-400
+              text-white text-base font-bold
               px-5 py-3        /* mobile default */
              md:py-0 md:px-3  /* tablet view (768px to <1024px) */
              lg:py-3 lg:px-5  /* desktop view (>=1024px) */
               rounded-full
-              shadow-lg shadow-cyan-500/40
+              border border-cyan-400/40
               hover:scale-[1.05] transition-transform duration-200
             "
           >
@@ -105,7 +105,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-black focus:outline-none"
           onClick={toggleMenu}
           aria-label="Toggle Menu"
         >
@@ -116,17 +116,17 @@ export default function Navbar() {
       {/* Mobile Dropdown */}
       <div
         className={`
-          md:hidden overflow-hidden transition-all duration-300 ease-in-out
-          ${isOpen ? "max-h-[420px] py-4" : "max-h-0"}
+          md:hidden overflow-hidden transition-transform duration-600 ease-in-out
+          ${isOpen ? "max-h-[350px] py-4" : "max-h-0"}
         `}
       >
-        <ul className="flex flex-col gap-4 bg-[#101936]/95 backdrop-blur-md text-white p-5 rounded-2xl border border-cyan-400/30 mx-4 shadow-xl">
+        <ul className="flex flex-col gap-4 bg-white/40 backdrop-blur-md text-black p-5 rounded-2xl border border-cyan-400/30 mx-4 shadow-xl">
           {navLinks.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
                 onClick={toggleMenu}
-                className="block text-lg hover:text-cyan-400 transition-colors"
+                className="block text-lg hover:text-gray-400 transition-colors"
               >
                 {link.label}
               </a>
@@ -147,9 +147,11 @@ export default function Navbar() {
               onClick={toggleMenu}
               className="
                 block text-lg font-bold
-                bg-gradient-to-r from-teal-400 to-cyan-500 text-[#0a1128] px-4 py-2
+                bg-gradient-to-r from-black to-gray-400
+              text-white  px-4 py-2
                 rounded-full text-center
-                hover:scale-[1.03] transition-transform
+                border border-cyan-400/40
+                hover:scale-[1.05] transition-transform duration-200
               "
             >
               Download now
