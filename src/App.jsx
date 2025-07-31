@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
 import About from "./components/About";
-import Work from "./components/Work";
+import Work from "./components/work";
 import Testimonials from "./components/Testimonials";
 import Team from "./components/Team";
 import Plans from "./components/Plans";
@@ -11,7 +11,7 @@ import Plans from "./components/Plans";
 import Investors from "./components/investors";
 import Contact from "./components/Contact";
 import FAQ from "./components/FAQ";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 // import Footer1 from "./components/Footer1";
 
 // ✅ AOS imports
@@ -78,7 +78,7 @@ export default function App() {
         <section id="investors" data-aos="fade-up">
           <Investors />
         </section>
-      
+
         <section id="Team" data-aos="fade-up">
           <Team />
         </section>

@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+
 // import blackCard from "../assets/blackCard.png";
+import card1 from "../assets/card1.png"
 import AS from "../assets/AS.svg";
 import GS from "../assets/GS.png";
 import { Canvas } from "@react-three/fiber";
@@ -10,6 +12,7 @@ import CardModel from "../components/CardModel";
 export default function HeroInteractive() {
   const words = ["Better", "Secure", "Easy"];
   const [currentIndex, setCurrentIndex] = useState(0);
+  const cardRef = useRef(null);
 
   // word switching interval
   useEffect(() => {
@@ -31,23 +34,31 @@ export default function HeroInteractive() {
     return () => window.removeEventListener("mousemove", moveGlow);
   },);
 
-  // const handleMouseMove = (e) => {
-  //   const card = cardRef.current;
-  //   if (!card) return;
-  //   const rect = card.getBoundingClientRect();
-  //   const x = e.clientX - rect.left;
-  //   const y = e.clientY - rect.top;
-  //   const centerX = rect.width / 2;
-  //   const centerY = rect.height / 2;
-  //   const rotateX = ((y - centerY) / centerY) * 10;
-  //   const rotateY = ((x - centerX) / centerX) * 10;
-  //   card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
-  // };
-  // const handleMouseLeave = () => {
-  //   if (cardRef.current) {
-  //     cardRef.current.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
-  //   }
-  // };
+ const handleMouseMove = (e) => {
+  const card = cardRef.current;
+  if (!card) return;
+
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+
+  const rotateX = ((y - centerY) / centerY) * 12;
+  const rotateY = ((x - centerX) / centerX) * 12;
+
+  card.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.07)`;
+  card.style.transition = "transform 0.05s ease-out"; // ⏩ faster + smooth
+};
+
+const handleMouseLeave = () => {
+  const card = cardRef.current;
+  if (!card) return;
+
+  card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+  card.style.transition = "transform 0.25s ease-in"; // 🧊 slower reset
+};
+
 
   return (
     <section
@@ -205,11 +216,39 @@ export default function HeroInteractive() {
 
         {/* RIGHT */}
       {/* RIGHT - 3D Card Model */}
+
+    {/* RIGHT - Interactive Card Image */}
 <div className="flex justify-center md:justify-end px-2 mt-8 md:mt-0 w-full h-full">
-  {/* ✅ Outer container allows scroll but disables pointer to Canvas */}
+  <div className="relative group w-[320px] sm:w-[360px] md:w-[400px] xl:w-[460px] transition-transform duration-75 ease-out perspective-[1000px]">
+
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="relative w-full h-auto transition-transform duration-300 ease-in-out rounded-2xl overflow-hidden shadow-[0_30px_60px_rgba(0,0,0,0.2)]"
+    >
+      {/* Outer glow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 to-cyan-400/20 opacity-0 group-hover:opacity-100 blur-2xl rounded-2xl transition duration-500 z-0 pointer-events-none"></div>
+
+      {/* Card image */}
+      <img
+        src={card1}
+        alt="Spendiz Card"
+        className="relative z-10 w-full object-contain rounded-2xl shadow-lg"
+      />
+
+      {/* Reflection shine on hover */}
+      <div className="absolute -top-1/4 -left-1/4 w-[150%] h-[150%] rotate-[25deg] bg-white opacity-5 group-hover:opacity-15 blur-3xl pointer-events-none transition-opacity duration-700"></div>
+    </div>
+  </div>
+</div>
+
+
+{/* <div className="flex justify-center md:justify-end px-2 mt-8 md:mt-0 w-full h-full">
+  ✅ Outer container allows scroll but disables pointer to Canvas
   <div className="w-full h-[400px] sm:h-[500px] md:h-[600px] xl:h-[650px] pointer-events-none">
     
-    {/* ✅ This enables pointer ONLY inside canvas area */}
+    ✅ This enables pointer ONLY inside canvas area
     <div className="w-full h-full pointer-events-auto touch-none">
       <Canvas camera={{ position: [0, 0, 4], fov: 50 }}>
         <ambientLight intensity={0.6} />
@@ -221,7 +260,7 @@ export default function HeroInteractive() {
     </div>
 
   </div>
-</div>
+</div> */}
 
       </div>
 

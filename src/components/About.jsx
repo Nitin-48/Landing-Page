@@ -17,7 +17,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative min-h-screen bg-white py-20 md:py-28 overflow-hidden"
+      className="relative min-h-screen bg-white py-20 md:py-6 overflow-hidden"
     >
       {/* Heading */}
       <div

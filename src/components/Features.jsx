@@ -62,7 +62,7 @@ export default function Features() {
   return (
     <section
       id="features"
-      className="relative bg-white pt-24 sm:pt-28 md:pt-32 pb-20"
+      className="relative bg-white pt-24 sm:pt-28 md:pt-28 pb-20"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-black to-gray-400 bg-clip-text text-transparent mb-12">

@@ -91,7 +91,7 @@ export default function Testimonials() {
                     rounded-2xl p-5 sm:p-6
                     shadow-[0_0_20px_rgba(0,0,0,0.6)]
                     transition-all duration-300
-                    hover:border-teal-400 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)]
+                    hover:border-teal-400 hover:shadow-[0_0_10px_rgba(34,211,238,0.4)]
                     hover:scale-[1.03]
                   "
                 >
@@ -144,7 +144,7 @@ export default function Testimonials() {
                     rounded-2xl p-5 sm:p-6
                     shadow-[0_0_20px_rgba(0,0,0,0.6)]
                     transition-all duration-300
-                    hover:border-purple-400 hover:shadow-[0_0_30px_rgba(139,92,246,0.4)]
+                    hover:border-teal-400 hover:shadow-[0_0_10px_rgba(34,211,238,0.4)]
                     hover:scale-[1.03]
                   "
                 >
@@ -164,7 +164,7 @@ export default function Testimonials() {
                     <div>
                       <p className="font-semibold text-white flex items-center gap-1">
                         {t.name}
-                        <FaCheckCircle className="text-purple-400 text-sm" title="Verified User" />
+                        <FaCheckCircle className="text-teal-400 text-sm" title="Verified User" />
                       </p>
                       <p className="text-sm text-gray-400">{t.username}</p>
                     </div>
@@ -184,8 +184,8 @@ export default function Testimonials() {
           </Marquee>
 
           {/* EDGE OVERLAYS */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-white"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-white"></div>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white"></div>
         </div>
       </div>
     </section>

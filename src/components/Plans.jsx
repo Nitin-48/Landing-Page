@@ -3,8 +3,8 @@ import { HiOutlineBadgeCheck } from "react-icons/hi";
 import { FaCheck, FaTimes } from "react-icons/fa";
 
 const Plans = () => {
-  const [billing, setBilling] = useState("monthly");
-  const [currency, setCurrency] = useState("INR");
+  // const [billing, setBilling] = useState("monthly");
+  // const [currency, setCurrency] = useState("INR");
   const cardRefs = useRef([]);
 
   const handleMouseMove = (e, index) => {
@@ -37,7 +37,7 @@ const Plans = () => {
   }, []);
 
   return (
-    <section id="pricing" className="relative py-20 px-4 bg-white text-black overflow-hidden">
+    <section id="pricing" className="relative py-0 px-4 bg-white text-black overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 tracking-tight">
@@ -51,7 +51,7 @@ const Plans = () => {
         </p>
 
         {/* Toggles */}
-        <div className="flex justify-center gap-4 mb-2 flex-wrap">
+        {/* <div className="flex justify-center gap-4 mb-2 flex-wrap">
           <div className="flex bg-gray-200 p-1 rounded-full">
             {["monthly", "yearly"].map((b) => (
               <button
@@ -82,7 +82,7 @@ const Plans = () => {
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
