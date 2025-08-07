@@ -1,21 +1,8 @@
-// import React, { useEffect, useState } from "react";
+import React from "react";
 import Marquee from "./Marquee";
 import { FaStar, FaQuoteLeft, FaCheckCircle } from "react-icons/fa";
 
 export default function Testimonials() {
-  // 🔥 Track scroll progress
-  // const [scrollProgress, setScrollProgress] = useState(0);
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  //     const progress = (scrollTop / docHeight) * 100;
-  //     setScrollProgress(progress);
-  //   };
-  //   window.addEventListener("scroll", handleScroll);
-  //   return () => window.removeEventListener("scroll", handleScroll);
-  // }, []);
-
   const testimonials = [
     {
       name: "Jill",
@@ -58,14 +45,14 @@ export default function Testimonials() {
   const secondRow = testimonials.slice(2);
 
   return (
-    <section className="relative px-4 sm:px-6 md:px-8 py-16 sm:py-20 bg-white text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative px-4 sm:px-6 md:px-8 py-16 sm:py-20 bg-black text-white overflow-hidden">
+      <div className="max-w-[90vw] mx-auto">
         {/* Heading */}
         <div className="relative mb-12">
           <h2
             className="
               text-3xl sm:text-4xl md:text-5xl font-extrabold text-center
-              bg-gradient-to-r from-black to-gray-400
+              bg-gradient-to-r from-white to-gray-400
               bg-clip-text text-transparent
               animate-[gradientShift_8s_linear_infinite]
               drop-shadow-md
@@ -73,39 +60,32 @@ export default function Testimonials() {
           >
             What People Are Saying
           </h2>
-          
         </div>
 
-        <div className="relative">
+        <div className="relative ">
           {/* FIRST MARQUEE */}
           <Marquee speed={30} pauseOnHover>
             {firstRow.map((t, i) => (
               <div
                 key={i}
-                className="min-w-[280px] sm:min-w-[300px] mx-3 mb-6 animate-fadeInUp"
+                className="min-w-[280px] sm:min-w-[300px] mx-3 mb-6 animate-fadeInUp p-1 rounded-lg"
                 style={{ animationDelay: `${i * 0.2}s` }}
               >
-                <div
-                  className="
-                    group bg-gradient-to-br from-gray-800/80 to-gray-900/70 backdrop-blur-md border border-cyan-500/20
-                    rounded-2xl p-5 sm:p-6
-                    shadow-[0_0_20px_rgba(0,0,0,0.6)]
-                    transition-all duration-300
-                    hover:border-teal-400 hover:shadow-[0_0_10px_rgba(34,211,238,0.4)]
-                    hover:scale-[1.03]
-                  "
-                >
-                  {/* <FaQuoteLeft className="text-teal-400 text-2xl mb-3" /> */}
-                  <div className="flex items-center gap-3 mb-3">
-                    <div
-                      className="
-                        w-12 h-12 rounded-full overflow-hidden
-                        relative flex-shrink-0
-                        transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6
-                        before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-gradient-to-r before:from-teal-400 before:via-cyan-400 before:to-purple-500 before:-z-10
-                      "
-                      style={{ boxShadow: "0 0 10px rgba(34,211,238,0.4)" }}
-                    >
+                <div className="
+                  group bg-gradient-to-br from-black/80  to-gray-900/70 backdrop-blur-md border border-cyan-400/10
+                  rounded-2xl p-5 sm:p-6
+                  shadow-[0_0_20px_rgba(255,255,255,0.05)]
+                  transition-all duration-300
+                  hover:border-gray-800 hover:shadow-[0_0_12px_rgba(34,211,238,0.3)]
+                  hover:scale-[1.03]
+                ">
+                  <div className="flex items-center  gap-3 mb-3">
+                    <div className="
+                      w-12 h-12 rounded-full overflow-hidden
+                      relative flex-shrink-0
+                      transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6
+                      before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-gradient-to-r before:from-teal-400 before:via-cyan-400 before:to-purple-500 before:-z-10
+                    " style={{ boxShadow: "0 0 10px rgba(34,211,238,0.4)" }}>
                       <img src={t.avatar} alt={t.name} className="w-full h-full rounded-full object-cover" />
                     </div>
                     <div>
@@ -118,10 +98,7 @@ export default function Testimonials() {
                   </div>
                   <div className="flex gap-1 mb-3">
                     {Array.from({ length: 5 }).map((_, idx) => (
-                      <FaStar
-                        key={idx}
-                        className={`text-lg ${idx < t.rating ? "text-yellow-400" : "text-gray-600"}`}
-                      />
+                      <FaStar key={idx} className={`text-lg ${idx < t.rating ? "text-yellow-400" : "text-gray-600"}`} />
                     ))}
                   </div>
                   <p className="text-gray-300 text-sm sm:text-base">{t.text}</p>
@@ -135,30 +112,24 @@ export default function Testimonials() {
             {secondRow.map((t, i) => (
               <div
                 key={i}
-                className="min-w-[280px] sm:min-w-[300px] mx-3 mb-6 animate-fadeInUp"
+                className="min-w-[280px] sm:min-w-[300px] mx-3 mb-6 animate-fadeInUp p-1 rounded-lg"
                 style={{ animationDelay: `${i * 0.2}s` }}
               >
-                <div
-                  className="
-                    group bg-gradient-to-br from-gray-800/80 to-gray-900/70 backdrop-blur-md border border-purple-400/20
-                    rounded-2xl p-5 sm:p-6
-                    shadow-[0_0_20px_rgba(0,0,0,0.6)]
-                    transition-all duration-300
-                    hover:border-teal-400 hover:shadow-[0_0_10px_rgba(34,211,238,0.4)]
-                    hover:scale-[1.03]
-                  "
-                >
-                  {/* <FaQuoteLeft className="text-purple-400 text-2xl mb-3" /> */}
+                <div className="
+                  group bg-gradient-to-br from-black/80 to-gray-900/70 backdrop-blur-md border border-purple-400/10
+                  rounded-2xl p-5 sm:p-6
+                  shadow-[0_0_20px_rgba(255,255,255,0.05)]
+                  transition-all duration-300
+                  hover:border-gray-800 hover:shadow-[0_0_12px_rgba(34,211,238,0.3)]
+                  hover:scale-[1.03]
+                ">
                   <div className="flex items-center gap-3 mb-3">
-                    <div
-                      className="
-                        w-12 h-12 rounded-full overflow-hidden
-                        relative flex-shrink-0
-                        transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6
-                        before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-gradient-to-r before:from-purple-400 before:via-teal-400 before:to-cyan-400 before:-z-10
-                      "
-                      style={{ boxShadow: "0 0 10px rgba(139,92,246,0.4)" }}
-                    >
+                    <div className="
+                      w-12 h-12 rounded-full overflow-hidden
+                      relative flex-shrink-0
+                      transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6
+                      before:content-[''] before:absolute before:inset-0 before:rounded-full before:p-[2px] before:bg-gradient-to-r before:from-purple-400 before:via-teal-400 before:to-cyan-400 before:-z-10
+                    " style={{ boxShadow: "0 0 10px rgba(139,92,246,0.4)" }}>
                       <img src={t.avatar} alt={t.name} className="w-full h-full rounded-full object-cover" />
                     </div>
                     <div>
@@ -171,10 +142,7 @@ export default function Testimonials() {
                   </div>
                   <div className="flex gap-1 mb-3">
                     {Array.from({ length: 5 }).map((_, idx) => (
-                      <FaStar
-                        key={idx}
-                        className={`text-lg ${idx < t.rating ? "text-yellow-400" : "text-gray-600"}`}
-                      />
+                      <FaStar key={idx} className={`text-lg ${idx < t.rating ? "text-yellow-400" : "text-gray-600"}`} />
                     ))}
                   </div>
                   <p className="text-gray-300 text-sm sm:text-base">{t.text}</p>
@@ -183,9 +151,9 @@ export default function Testimonials() {
             ))}
           </Marquee>
 
-          {/* EDGE OVERLAYS */}
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white"></div>
+          {/* GRADIENT EDGES */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-black to-transparent z-10"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-black to-transparent z-10"></div>
         </div>
       </div>
     </section>

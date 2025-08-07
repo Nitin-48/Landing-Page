@@ -1,15 +1,15 @@
 import React, { useEffect, } from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import Hero from "./components/Hero";
-import Features from "./components/Features";
-import About from "./components/About";
+import Features from "./components/features";
+import About from "./components/about";
 import Work from "./components/work";
-import Testimonials from "./components/Testimonials";
-import Team from "./components/Team";
-import Plans from "./components/Plans";
+import Testimonials from "./components/testimonials";
+import Team from "./components/team";
+import Plans from "./components/plans";
 // import Security from "./components/Security";
 import Investors from "./components/investors";
-import Contact from "./components/Contact";
+import Contact from "./components/contact";
 import FAQ from "./components/FAQ";
 import Footer from "./components/footer";
 // import Footer1 from "./components/Footer1";
@@ -38,7 +38,7 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen font-sans scroll-smooth relative b-[#050a17]">
+    <div className="min-h-screen font-sans scroll-smooth relative bg-black">
       {/* 🔹 Glow element that follows cursor */}
       {/* <div
         className="pointer-events-none fixed w-72 h-72 rounded-full
@@ -75,10 +75,6 @@ export default function App() {
           <Plans />
         </section>
         
-        <section id="investors" data-aos="fade-up">
-          <Investors />
-        </section>
-
         <section id="Team" data-aos="fade-up">
           <Team />
         </section>
@@ -87,9 +83,12 @@ export default function App() {
           <Testimonials />
         </section>
 
-
         <section id="faq" data-aos="fade-up">
           <FAQ />
+        </section>
+
+        <section id="investors" data-aos="fade-up">
+          <Investors />
         </section>
 
         <section id="contact" data-aos="fade-up">

@@ -1,5 +1,7 @@
 export default {
 
+  darkMode: 'class', // ✅ enable dark mode via a CSS class
+
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
     extend: {
@@ -12,6 +14,10 @@ export default {
       }
     }
   },
+  animation: {
+        spin: "spin 1s linear infinite", // <-- if not already defined
+        'spin-slow': "spin 15s linear infinite",
+      },
   plugins: [
     //  require('taos/plugin')
   ],

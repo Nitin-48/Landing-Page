@@ -1,117 +1,65 @@
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import card from "../assets/card.png";
-import A1 from "../assets/A1.jpg";
-import A2 from "../assets/A2.jpg";
+
+// 📦 Assets
+import illu from "../assets/illu.svg";
+// import coin from "../assets/coin.jpeg";
 
 export default function About() {
   useEffect(() => {
-    AOS.init({
-      duration: 800,
-      easing: "ease-out-cubic",
-      once: true,
-    });
+    AOS.init({ duration: 800, easing: "ease-out-cubic", once: true });
   }, []);
 
   return (
     <section
-      id="about"
-      className="relative min-h-screen bg-white py-20 md:py-6 overflow-hidden"
+      id="whatwedo"
+      className="relative bg-black text-white py-24 px-4 sm:px-8 lg:px-20"
     >
-      {/* Heading */}
-      <div
-        className="text-center mb-16 max-w-3xl mx-auto"
-        data-aos="fade-up"
-        data-aos-delay="100"
-      >
-        <h2
-          className="
-            text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight
-            bg-gradient-to-r from-black to-gray-400
-            bg-clip-text text-transparent -mb-10
-            drop-shadow-md
-          "
-        >
-          About Spendiz
-        </h2>
-      </div>
+      <h1 className="text-center text-5xl sm:text-6xl font-bold pb-10 pt-0">What we do</h1>
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        
+        {/* Left Side */}
+        <div className="space-y-10" data-aos="fade-right">
+          
+          <div>
+            <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white">
+              Simplify every spend with
+              <span className="block text-gray-300">Spendiz</span>
+            </h2>
+            <p className="mt-4 text-lg text-gray-400">
+              Every spend is a guessing game. Multiple cards, apps, and payment modes lead to <strong>missed cashback, expired offers, and lost reward points — up to 70% of savings gone</strong>.
+            </p>
 
-      {/* Card 1 */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="200"
-        className="
-          w-full
-          rounded-2xl backdrop-blur-md
-          transition-all duration-500 mb-10
-        "
-      >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center">
-          {/* Image */}
-          <div className="w-full md:w-1/2">
-            <img
-              src={A1}
-              alt="Who We Are"
-              className="object-cover w-full h-full rounded-[14px] hover:scale-105 transition-transform duration-500"
-            />
           </div>
 
-          {/* Text */}
-          <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-12">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
-              Who We Are
-            </h3>
-            <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-              Spendiz is a passionate team of financial technologists, data
-              scientists, and customer experience specialists dedicated to making
-              your credit card experience seamless. We help you maximize rewards,
-              unlock hidden perks, and spend smarter with ease and clarity.
+          <div>
+            <h3 className="text-2xl font-semibold mb-3 text-white">Built for smart spenders</h3>
+            <p className="text-gray-400 text-md">
+              <strong>Spendiz</strong> solves this with a live offer database, <strong>AI-driven matching</strong>, and real-time calculations — helping you pick the best card instantly and never miss a benefit again.
             </p>
+
+            <div className="pt-10">
+              <a
+                href="#"
+                className="inline-block bg-black text-white border-2 b font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+              >
+                Try Spendiz Now
+              </a>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Card 2 */}
-      <div
-        data-aos="fade-up"
-        data-aos-delay="400"
-        className="
-          w-full
-          rounded-2xl backdrop-blur-md
+        {/* Right Side */}
+        <div className="relative w-full h-[400px] md:h-[480px]" data-aos="zoom-in">
 
-          transition-all duration-500
-        "
-      >
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row-reverse items-center">
-          {/* Image */}
-          <div className="w-full md:w-1/2 ">
-            <img
-              src={A2}
-              alt="Why We Built It"
-              className="object-cover w-7xl h-100 rounded-[14px] hover:scale-105 transition-transform duration-500 "
-            />
-          </div>
+          {/* Main Card Image */}
+          <img
+            src={illu}
+            alt="Spendiz Cards Demo"
+            className="absolute -right-[80px] top-[60px] w-48 md:w-90 -translate-x-1/2 z-10 rounded-xl rounded-bl-[60px] rounded-br-[60px] rounded-tr-[60px] rounded-tl-[60px] shadow-2xl transition-transform duration-500 ease-in-out hover:scale-105"
+          />
 
-          {/* Text */}
-          <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-12">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4">
-              Why We Built It
-            </h3>
-            <ul className="text-gray-700 list-disc pl-5 space-y-3 text-sm sm:text-base md:text-lg leading-relaxed">
-              <li>
-                <span className="text-gray-900 font-semibold">The Problem:</span>{" "}
-                Hidden terms, minimum spend requirements, and scattered promos
-                mean most cardholders miss out on valuable rewards and cashback.
-              </li>
-              <li>
-                <span className="text-gray-900 font-semibold">Our Solution:</span>{" "}
-                Spendiz aggregates real‑time offer data, instantly matching you
-                with the best card for every purchase—no guesswork, just instant
-                savings.
-              </li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
