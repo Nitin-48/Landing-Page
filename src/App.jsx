@@ -12,6 +12,9 @@ import Investors from "./components/investors";
 import Contact from "./components/contact";
 import FAQ from "./components/FAQ";
 import Footer from "./components/footer";
+import HeroCredStyle from './components/HeroCredStyle';
+import Anipage1 from "./components/anipage1";
+import Anipage2 from "./components/Anipage2";
 // import Footer1 from "./components/Footer1";
 
 // ✅ AOS imports
@@ -57,6 +60,12 @@ export default function App() {
         <section id="hero">
           <Hero />
         </section>
+        <Anipage1 />
+
+        
+
+          {/* <HeroCredStyle /> */}
+
 
         <section id="about" data-aos="fade-up">
           <About />
@@ -65,6 +74,8 @@ export default function App() {
         <section id="feature" data-aos="fade-up">
           <Features />
         </section>
+        
+        <Anipage2 />
 
         <section id="work" data-aos="fade-up">
           <Work />

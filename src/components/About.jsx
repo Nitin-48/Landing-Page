@@ -1,4 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect} from 'react';
+// import React, { useRef, useState } from 'react';
+import Spline from '@splinetool/react-spline';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -10,6 +12,27 @@ export default function About() {
   useEffect(() => {
     AOS.init({ duration: 800, easing: "ease-out-cubic", once: true });
   }, []);
+
+  // const containerRef = useRef(null);
+  //   const [isVisible, setIsVisible] = useState(false);
+  
+  //   useEffect(() => {
+  //     const observer = new IntersectionObserver(
+  //       ([entry]) => {
+  //         if (entry.isIntersecting) {
+  //           setIsVisible(true);
+  //         }
+  //       },
+  //       { threshold: 0.5 } // Slightly lower to trigger earlier
+  //     );
+  
+  //     const current = containerRef.current;
+  //     if (current) observer.observe(current);
+  
+  //     return () => {
+  //       if (current) observer.unobserve(current);
+  //     };
+  //   }, []);
 
   return (
     <section
@@ -51,16 +74,40 @@ export default function About() {
         </div>
 
         {/* Right Side */}
-        <div className="relative w-full h-[400px] md:h-[480px]" data-aos="zoom-in">
+{/* <div
+  ref={containerRef}
+  className="relative w-full h-[420px] md:h-[500px] xl:h-[560px] 2xl:h-[620px]"
+  data-aos="zoom-in"
+>
 
-          {/* Main Card Image */}
-          <img
-            src={illu}
-            alt="Spendiz Cards Demo"
-            className="absolute -right-[80px] top-[60px] w-48 md:w-90 -translate-x-1/2 z-10 rounded-xl rounded-bl-[60px] rounded-br-[60px] rounded-tr-[60px] rounded-tl-[60px] shadow-2xl transition-transform duration-500 ease-in-out hover:scale-105"
+        {isVisible && (
+          <Spline
+            scene="https://prod.spline.design/7ckfdNYPpwXCdjMm/scene.splinecode"
+            className="absolute inset-0 w-full h-full !min-h-0 !max-h-none"
           />
+        )}
+      </div> */}
 
-        </div>
+
+
+
+
+
+
+<div className="relative w-full h-[420px] md:h-[500px] xl:h-[560px] 2xl:h-[620px]" data-aos="zoom-in">
+  
+  <img
+    src={illu}
+    alt="Spendiz Cards Demo"
+    className="absolute -right-[80px] top-[60px]
+      w-64 sm:w-72 md:w-80 lg:w-[340px] xl:w-[500px] 2xl:w-[480px]
+      -translate-x-1/4
+      rounded-xl rounded-bl-[60px] rounded-br-[60px] rounded-tr-[60px] rounded-tl-[60px]
+      shadow-2xl transition-transform duration-500 ease-in-out hover:scale-105"
+  />
+</div>
+
+
       </div>
     </section>
   );
