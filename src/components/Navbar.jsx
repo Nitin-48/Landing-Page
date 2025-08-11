@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, Menu, X } from "lucide-react";
-import Wlogo from "../assets/Wlogo.png";
+import W_logo from "../assets/W_logo.png";
 import Features from "./features";
 
 export default function Navbar() {
@@ -29,7 +29,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white/50 dark:bg-black/50 border-2 border-amber-300 backdrop-blur-md shadow-md transition-colors">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/50 dark:bg-black/50 backdrop-blur-md shadow-md transition-colors">
       {/* Scroll Progress Bar */}
       <div
         className="h-[3px] bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500 transition-all duration-150 ease-linear"
@@ -41,7 +41,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#hero" className="flex items-center">
           <img
-            src={Wlogo}
+            src={W_logo}
             alt="Spendiz"
             className="w-[220px] h-25 hover:scale-110 transition-transform duration-300 p-0"
           />

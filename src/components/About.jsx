@@ -37,13 +37,13 @@ export default function About() {
   return (
     <section
       id="whatwedo"
-      className="relative bg-black text-white py-24 px-4 sm:px-8 lg:px-20"
+      className="relative bg-black text-white py-0 px-4 sm:px-8 lg:px-20"
     >
       <h1 className="text-center text-5xl sm:text-6xl font-bold pb-10 pt-0">What we do</h1>
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Side */}
-        <div className="space-y-10" data-aos="fade-right">
+        <div className='lg:translate-y-[-60px] "space-y-10" data-aos="fade-right"'>
           
           <div>
             <h2 className="text-4xl sm:text-5xl font-bold leading-tight text-white">
@@ -65,7 +65,7 @@ export default function About() {
             <div className="pt-10">
               <a
                 href="#"
-                className="inline-block bg-black text-white border-2 b font-semibold px-6 py-3 rounded-full shadow-md hover:scale-105 transition-transform"
+                className="inline-block bg-black text-white border-2 b font-semibold px-6 py-4 rounded-full shadow-md hover:scale-105 transition-transform"
               >
                 Try Spendiz Now
               </a>
@@ -94,18 +94,32 @@ export default function About() {
 
 
 
-<div className="relative w-full h-[420px] md:h-[500px] xl:h-[560px] 2xl:h-[620px]" data-aos="zoom-in">
-  
+<div
+  className="relative w-full h-[320px] md:h-[360px] lg:h-[640px] xl:h-[60%vh] 2xl:h-[900px] flex items-center justify-center overflow-visible"
+  data-aos="zoom-in"
+>
   <img
     src={illu}
     alt="Spendiz Cards Demo"
-    className="absolute -right-[80px] top-[60px]
-      w-64 sm:w-72 md:w-80 lg:w-[340px] xl:w-[500px] 2xl:w-[480px]
-      -translate-x-1/4
+    className="
+      /* 📱/📟 unchanged: centered */
+      block mx-auto h-full w-auto object-contain
+      sm:max-w-[420px] md:max-w-[480px]
+
       rounded-xl rounded-bl-[60px] rounded-br-[60px] rounded-tr-[60px] rounded-tl-[60px]
-      shadow-2xl transition-transform duration-500 ease-in-out hover:scale-105"
+      shadow-2xl transition-transform duration-500 ease-in-out hover:scale-105
+
+      /* 💻 & up: much larger + thoda left */
+      lg:absolute lg:mx-0 lg:h-auto lg:w-[640px] lg:left-[-80px] lg:top-[20px]
+      xl:w-[820px] xl:left-[120px] xl:top-[90px]
+      2xl:w-[980px] 2xl:left-[-160px]
+    "
   />
 </div>
+
+
+
+
 
 
       </div>

@@ -24,6 +24,9 @@ const Spendiz3DHero = () => {
     };
   }, []);
 
+  const BADGE_SAFE = 0;   // px: Spline badge ke liye bottom gap (mobile pe 96 try)
+  const FADE_HEIGHT = '30vh'; // kitna upar tak fade chahiye
+
   return (
     <section
       ref={containerRef}
@@ -54,8 +57,19 @@ const Spendiz3DHero = () => {
   </div>
 </div>
 
-      {/* Glow Circle or Decoration */}
-      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500 opacity-20 blur-3xl rounded-full z-0 pointer-events-none" />
+ {/* ⬇️ Bottom fade overlay (badge-safe) */}
+        <div
+          className="pointer-events-none absolute left-0 right-0 z-20"
+          style={{
+            bottom: `${BADGE_SAFE}px`,
+            height: FADE_HEIGHT,
+
+            background:
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.96) 85%)",
+          }}
+        />
+    
+    
     </section>
   );
 };

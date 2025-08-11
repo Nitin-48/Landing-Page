@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Spline from "@splinetool/react-spline";
 
-const SPACER_VH = 250; // kitni der tak yeh section pinned rahe (>=120vh rakho)
+const SPACER_VH = 280; // kitni der tak yeh section pinned rahe (>=120vh rakho)
 const BADGE_SAFE = window.innerWidth < 640 ? 96 : 84;
 
 
