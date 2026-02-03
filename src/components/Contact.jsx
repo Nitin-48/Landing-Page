@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import { MailIcon, PhoneIcon } from "@heroicons/react/solid";
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import Confetti from "react-confetti";
-import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [, setShowModal] = useState(false);
@@ -21,33 +20,33 @@ export default function Contact() {
     setErrors({ ...errors, [e.target.name]: "" });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
     const newErrors = {};
     if (!formData.name.trim()) newErrors.name = "Full Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
+
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
     setLoading(true);
-    try {
-      await emailjs.send("service_6n11rq5", "template_ucr18na", formData, "Z6KTcxXiFUQp1gkZI");
+
+    // ✅ Static success simulation (no EmailJS)
+    setTimeout(() => {
       setLoading(false);
       setSuccess(true);
       if (navigator.vibrate) navigator.vibrate(100);
+
       setTimeout(() => {
         setSuccess(false);
         setShowModal(false);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", mobile: "" });
       }, 3000);
-    } catch (err) {
-      console.error(err);
-      setLoading(false);
-      alert("Error sending message.");
-    }
+    }, 800);
   };
 
   return (
@@ -55,9 +54,8 @@ export default function Contact() {
       {success && <Confetti numberOfPieces={180} recycle={false} />}
       <audio ref={audioRef} src="/success.mp3" preload="auto" />
 
-    <section className="relative dark:bg-[#0c0c0c] bg-white text-gray-800 dark:text-gray-200 py-16 sm:py-20 px-6 md:px-12 xl:px-28 2xl:px-48 3xl:px-72">
-      <div className="max-w-screen-screen 3xl:max-w-[1800px] mx-auto rounded-3xl overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.6)] border border-gray-300/20 dark:border-gray-600/40 bg-gray-100 dark:bg-white/5 backdrop-blur-md">
-
+      <section className="relative dark:bg-[#0c0c0c] bg-white text-gray-800 dark:text-gray-200 py-16 sm:py-20 px-6 md:px-12 xl:px-28 2xl:px-48 3xl:px-72">
+        <div className="max-w-screen-screen 3xl:max-w-[1800px] mx-auto rounded-3xl overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.6)] border border-gray-300/20 dark:border-gray-600/40 bg-gray-100 dark:bg-white/5 backdrop-blur-md">
           <div className="grid md:grid-cols-2">
             <div className="relative p-6 sm:p-8 md:p-10 xl:p-14 2xl:p-20 flex flex-col justify-center">
               <h2 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-extrabold mb-4 leading-tight">
@@ -66,36 +64,32 @@ export default function Contact() {
               <p className="text-gray-600 dark:text-gray-300 mb-6 sm:mb-8 text-base sm:text-lg xl:text-xl">
                 Fill in the form and start a conversation with our team.
               </p>
+
               <div className="flex items-center mb-4 sm:mb-6 group">
-                <PhoneIcon className="w-6 h-6 xl:w-8 xl:h-8 text-gray-500 dark:text-gray-300 group-hover:text-white mr-3 sm:mr-4" />
-                <span className="text-base sm:text-lg xl:text-xl font-medium group-hover:text-white transition-colors">
+                <PhoneIcon className="w-6 h-6 xl:w-8 xl:h-8 text-gray-500 dark:text-gray-300 mr-3 sm:mr-4" />
+                <span className="text-base sm:text-lg xl:text-xl font-medium">
                   +91 8285868648
                 </span>
               </div>
+
               <div className="flex items-center group">
-                <MailIcon className="w-6 h-6 xl:w-8 xl:h-8 text-gray-500 dark:text-gray-300 group-hover:text-white mr-3 sm:mr-4" />
+                <MailIcon className="w-6 h-6 xl:w-8 xl:h-8 text-gray-500 dark:text-gray-300 mr-3 sm:mr-4" />
                 <a
-                  href="mailto:hello@spendiz.com"
-                  className="text-base sm:text-lg xl:text-xl font-medium hover:text-white break-all"
+                  href="mailto:jmv.nitinraj48@gmail.com"
+                  className="text-base sm:text-lg xl:text-xl font-medium break-all"
                 >
-                  hello@spendiz.com
+                  jmv.nitinraj48@gmail.com
                 </a>
               </div>
+
               <div className="flex gap-4 mt-6">
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-white text-2xl xl:text-3xl transition-transform hover:scale-110"
-                >
+                <a href="#" className="text-gray-500 text-2xl xl:text-3xl">
                   <FaLinkedin />
                 </a>
-                <a
-                  href="#"
-                  className="text-gray-500 hover:text-white text-2xl xl:text-3xl transition-transform hover:scale-110"
-                >
+                <a href="#" className="text-gray-500 text-2xl xl:text-3xl">
                   <FaTwitter />
                 </a>
               </div>
-              <div className="absolute top-6 sm:top-10 right-6 sm:right-10 w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-full blur-3xl opacity-20 dark:opacity-10"></div>
             </div>
 
             <div className="bg-white dark:bg-transparent p-6 sm:p-8 md:p-12 xl:p-14 2xl:p-20">
@@ -105,7 +99,7 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Full Name"
-                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/20 px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white text-sm sm:text-base xl:text-lg"
+                  className="w-full rounded-lg border px-4 py-3"
                 />
                 {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
 
@@ -115,20 +109,18 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Email"
-                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/20 px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white text-sm sm:text-base xl:text-lg"
+                  className="w-full rounded-lg border px-4 py-3"
                 />
                 {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                
+
                 <input
                   name="mobile"
                   type="tel"
                   value={formData.mobile}
                   onChange={handleChange}
                   placeholder="Mobile Number"
-                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/20 px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white text-sm sm:text-base xl:text-lg"
+                  className="w-full rounded-lg border px-4 py-3"
                 />
-                {errors.mobile && <p className="text-red-500 text-sm">{errors.mobile}</p>}
-
 
                 <textarea
                   name="message"
@@ -136,14 +128,14 @@ export default function Contact() {
                   onChange={handleChange}
                   rows="4"
                   placeholder="Your Message"
-                  className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black/20 px-4 py-3 text-gray-800 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white text-sm sm:text-base xl:text-lg"
+                  className="w-full rounded-lg border px-4 py-3"
                 />
                 {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white font-semibold py-3 rounded-lg hover:scale-[1.02] transition-transform duration-200 shadow-lg hover:shadow-black/40 text-sm sm:text-base xl:text-lg"
+                  className="w-full bg-gradient-to-r from-gray-700 via-gray-800 to-gray-900 text-white font-semibold py-3 rounded-lg"
                 >
                   {loading ? "Sending..." : "Submit"}
                 </button>
