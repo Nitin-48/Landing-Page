@@ -12,7 +12,7 @@ export default function HeroInteractive() {
       setCurrentIndex((p) => (p + 1) % words.length);
     }, 2000);
     return () => clearInterval(id);
-  }, []);
+  }, [ words.length ]);
 
   useEffect(() => {
     const moveGlow = (e) => ({ x: e.clientX, y: e.clientY });
@@ -100,6 +100,9 @@ export default function HeroInteractive() {
   <div className="relative w-full h-[320px] sm:h-[380px]">
     <Spline
       scene="https://prod.spline.design/1PbkEGm7yhWUmH1m/scene.splinecode"
+
+      
+      // scene="https://prod.spline.design/1PbkEGm7yhWUmH1m/scene.splinecode"
       className="absolute inset-0 w-full h-full"
     />
   </div>
@@ -113,6 +116,9 @@ export default function HeroInteractive() {
 <div className="hidden md:block absolute inset-0 h-screen w-screen translate-x-40 -translate-y-0 z-0">
   <Spline
     scene="https://prod.spline.design/1PbkEGm7yhWUmH1m/scene.splinecode"
+
+    
+    // scene="https://prod.spline.design/1PbkEGm7yhWUmH1m/scene.splinecode"
     className="w-screen h-screen"
   />
 </div>

@@ -13,9 +13,9 @@ import Contact from "./components/contact";
 import FAQ from "./components/FAQ";
 import Footer from "./components/footer";
 import HeroCredStyle from './components/HeroCredStyle';
-import Anipage1 from "./components/anipage1";
-import Anipage2 from "./components/Anipage2";
-// import Footer1 from "./components/Footer1";
+// import Anipage1 from "./components/anipage1";
+// import Anipage2 from "./components/Anipage2";
+import LandingSections from "./components/LandingSections";
 
 // ✅ AOS imports
 import AOS from "aos";
@@ -55,12 +55,13 @@ export default function App() {
 
       {/* 🔹 Main Content */}
       <div className="relative z-10">
+        {/* <LandingSections /> */}
         <Navbar />
 
         <section id="hero">
           <Hero />
         </section>
-        <Anipage1 />
+        {/* <Anipage1 /> */}
 
         
 
@@ -75,7 +76,7 @@ export default function App() {
           <Features />
         </section>
         
-        <Anipage2 />
+        {/* <Anipage2 /> */}
 
         <section id="work" data-aos="fade-up">
           <Work />

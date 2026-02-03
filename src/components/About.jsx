@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 // import React, { useRef, useState } from 'react';
-import Spline from '@splinetool/react-spline';
+// import Spline from '@splinetool/react-spline';
 import AOS from "aos";
 import "aos/dist/aos.css";
 
